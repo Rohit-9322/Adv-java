@@ -14,15 +14,16 @@ public class IPLDao {
 	
 	private List<player> ipl_db = null;
 	
-	String path = "com.mysql.cj.jdbc.Driver";
-	String url = "jdbc:mysql://localhost:3306/advjava_433_db";
-	String un = "root";
-	String pwd = "root";
-	Connection conn = null;
-	PreparedStatement pst = null;
-	ResultSet rs = null;
+	private String path = "com.mysql.cj.jdbc.Driver";
+	private String url = "jdbc:mysql://localhost:3306/advjava_433_db";
+	private String un = "root";
+	private String pwd = "root";
 	
-	String query = "select * from player";
+	private Connection conn = null;
+	private PreparedStatement pst = null;
+	private ResultSet rs = null;
+	
+	private String query = "select * from player";
 
 	public List<player> getAllPlayer(){
 		
@@ -62,6 +63,8 @@ public class IPLDao {
 		return ipl_db;
 	}
 	
+	// Team wise player 
+	
 	public List<player> getPlayersByTeam(String tname){
 
 	    List<player> list = new ArrayList<>();
@@ -98,5 +101,63 @@ public class IPLDao {
 	    }
 
 	    return list;
+	}
+	
+	// Insert player 
+	private String insert_query = "insert into player values(?,?,?,?,?)";
+
+	public boolean addPlayer(player p) {
+          try {
+
+	        conn = DriverManager.getConnection(url, un, pwd);
+
+	        pst = conn.prepareStatement(insert_query);
+
+	        pst.setInt(1, p.getPid());
+	        pst.setString(2, p.getPname());
+	        pst.setInt(3, p.getRun());
+	        pst.setInt(4, p.getWickets());
+	        pst.setString(5, p.getTname());
+
+	        int row = pst.executeUpdate();
+
+	        if(row > 0) {
+	            return true;
+	        }
+
+	    } catch(Exception e) {
+	        e.printStackTrace();
+	    }
+
+	    return false;
+	}
+	
+	// Update player 
+	private String update_query = "update player set pname=?, runs=?, wickets=?, tname=? where pid=?";
+
+	public boolean updatePlayer(player p) {
+       try {
+
+	        conn = DriverManager.getConnection(url, un, pwd);
+
+	        pst = conn.prepareStatement(update_query);
+
+	        pst.setString(1, p.getPname());
+	        pst.setInt(2, p.getRun());
+	        pst.setInt(3, p.getWickets());
+	        pst.setString(4, p.getTname());
+	        pst.setInt(5, p.getPid());
+
+	        int row = pst.executeUpdate();
+
+	        if(row > 0) {
+	            return true;
+	        }
+
+	    } catch(Exception e) {
+	        e.printStackTrace();
+	    }
+
+	    return false;
 	}
 }
