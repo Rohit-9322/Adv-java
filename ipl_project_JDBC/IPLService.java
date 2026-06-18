@@ -11,7 +11,6 @@ public class IPLService {
 	
 	
 	// THAT GIVE ALL PLEAR NAME 
-	
 	public List<player> getAllPlayers() {
 
 		ipldao = new IPLDao();
@@ -21,6 +20,8 @@ public class IPLService {
 		return ipl_db;
 	}
 	
+	
+	// get team wise player 
 	public List<player> getPlayersByTeam(String tname) {
 
 	    ipldao = new IPLDao();
@@ -28,5 +29,22 @@ public class IPLService {
 	    return ipldao.getPlayersByTeam(tname);
 	}
 	
+	
+	// Insert player 
+	public boolean addPlayer(player p) {
+
+	    ipldao = new IPLDao();
+
+	    return ipldao.addPlayer(p);
+	}
+
+	
+	// update player 
+	public boolean updatePlayer(player p) {
+
+	    ipldao = new IPLDao();
+
+	    return ipldao.updatePlayer(p);
+	}
 
 }
