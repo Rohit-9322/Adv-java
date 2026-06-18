@@ -25,21 +25,21 @@ public class player {
 
 
 
-  public int getJn() {
-	return pid;
-  }
+  public int getPid() {
+	    return pid;
+	}
 
-  public void setJn(int pid) {
-	this.pid = pid;
-  }
+	public void setPid(int pid) {
+	    this.pid = pid;
+	}
 
-  public String getName() {
-	return pname;
-  }
+	public String getPname() {
+	    return pname;
+	}
 
-  public void setName(String pname) {
-	this.pname = pname;
-  }
+	public void setPname(String pname) {
+	    this.pname = pname;
+	}
 
   public int getRun() {
 	return run;
