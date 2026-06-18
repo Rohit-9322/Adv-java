@@ -1,6 +1,6 @@
 package com.rw.controller;
 
-import java.util.List;
+//import java.util.List;
 
 import com.rw.entity.player;
 import com.rw.service.IPLService;
@@ -12,15 +12,29 @@ public class IPLController {
 		IPLService iplservice = new IPLService();
 		
 		// THAT FOR ALL PLAYER 
+		// List<player> allPlayers = iplservice.getAllPlayers();
+		// allPlayers.forEach(p -> System.out.println(p.getPname()));
 		
-//		 List<player> allPlayers = iplservice.getAllPlayers();
-//		 
-//		 allPlayers.forEach(p -> System.out.println(p.getName()));
+		//Team Wise Players
+	     // List<player> teamPlayers = iplservice.getPlayersByTeam("CSK");
+         // teamPlayers.forEach(System.out::println);
 		
-		//eam Wise Players
-		List<player> teamPlayers = iplservice.getPlayersByTeam("CSK");
+		
+		// Insert player 
+//		player p = new player(101,"Rohit Wankhade",6500,55,"MI");
+//        boolean result = iplservice.addPlayer(p);
+//        System.out.println(result);
+        
+        // update 
+        player p = new player(101,"Rohit patil",7500,55,"MI");
 
-	    teamPlayers.forEach(System.out::println);
+        		boolean result = iplservice.updatePlayer(p);
+
+        		System.out.println(result);
+		
+		
+		 
+		 
 		
 		
 
